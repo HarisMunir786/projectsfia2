@@ -9,7 +9,7 @@ from flask_login import LoginManager
 from os import getenv
 import os
 
-# create a new instance of Flask and store it in app 
+# create a new instance of Flask and store it in app
 app = Flask(__name__)
 # create a new instance of bcrypt and store it in Bcrypt(app)
 bcrypt = Bcrypt(app)
