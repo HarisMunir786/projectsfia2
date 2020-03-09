@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<head>
+                <title>{{ title }} - Page</title>
+	</head>
+        <div class ="navbar" align="center">
+                <a>&nbsp</a><a>&nbsp</a>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a>&nbsp</a><a>&nbsp</a><a>|</a><a>&nbsp</a><a>&nbsp</a>
+                <a href="{{ url_for('register') }}">Register</a>
+                <a>&nbsp</a><a>&nbsp</a><a>|</a><a>&nbsp</a><a>&nbsp</a>
+                <a href="{{ url_for('login') }}">Login</a>
+        </div>
+       	       {% block body %}{% endblock %}
+        </body>
+</html>
