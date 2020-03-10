@@ -59,13 +59,13 @@ class GenerateForm(FlaskForm):
 	sport = SelectField('Sport',
 		validators=[
 			DataRequired()
-		], choices = [("Football", "Basketball","Volleyball", "Rugby", "Hockey", "Tennis", "Table Tennis", "Badminton")]
-	}
+		], choices = [("FOOTBALL","Football"),("BASKETBALL","Basketball"),("VOLLEYBALL","Volleyball"),("RUGBY", "Rugby"), ("HOCKEY", "Hockey"), ("TENNIS", "Tennis"), ("TABLE TENNIS", "Table Tennis"), ("BADMINTON", "Badminton")]
+	)
 
 	modus = SelectField('Modus',
 		validators=[
 			DataRequired()
-		], choices = [("Semi Finals", "Quarter Finals","8th Finals", "16th Finals", "32nd Finals")]
+		], choices = [("SEMI FINALS", "Semi Finals"), ("QUARTER FINALS", "Quarter Finals"), ("8TH FINALS", "8th Finals"), ("16TH FINALS","16th Finals"), ("32ND FINALS", "32nd Finals")]
 	)
 
 	participant = StringField('Participant',
