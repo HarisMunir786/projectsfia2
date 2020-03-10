@@ -73,5 +73,4 @@ class GenerateForm(FlaskForm):
 			DataRequired()
 		]
 	)
-
-
+	submit = SubmitField('Generate')
