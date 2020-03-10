@@ -42,11 +42,11 @@ def login():
 	return render_template('login.html', title='Login', form=form)
 
 @app.route('/generate', methods=['GET', 'POST'])
-@login_required()
+#@login_required()
 def generate():
-	form = GenerateForm
-#	if form.validate_on_submit():
-        return render_template('generate.html', title='Random Generator', form=form)
+	form = GenerateForm()
+	#if form.validate_on_submit():
+	return render_template('generate.html', title='Random Generator', form=form)
 
 @app.route("/logout")
 def logout():

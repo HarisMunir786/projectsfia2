@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField, BooleanField
+from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import User, Sport, Modus, Participant
 
@@ -56,16 +56,16 @@ class LoginForm(FlaskForm):
 	submit = SubmitField('Login')
 
 class GenerateForm(FlaskForm):
-	sport = StringField('Sport',
+	sport = SelectField('Sport',
 		validators=[
 			DataRequired()
-		]
-	)
+		], choices = [("Football", "Basketball","Volleyball", "Rugby", "Hockey", "Tennis", "Table Tennis", "Badminton")]
+	}
 
-	modus = StringField('Modus',
-		validotors=[
+	modus = SelectField('Modus',
+		validators=[
 			DataRequired()
-		]
+		], choices = [("Semi Finals", "Quarter Finals","8th Finals", "16th Finals", "32nd Finals")]
 	)
 
 	participant = StringField('Participant',
