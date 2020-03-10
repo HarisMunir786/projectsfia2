@@ -17,3 +17,30 @@ class User(db.Model, UserMixin):
 			'Email: ', self.email
 			])
 
+class Sport(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	sportname = db.Column(db.String(100), nullable=False)
+	playerid = db.relationship('Participant', backref='playerid')
+	modusid = db.relationship('Modus', backref='modusid')
+	def __repr__(self):
+		return ''.join([
+                        'Sport: ', self.sportname
+			])
+
+class Modus(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	modus = db.Column(db.String(20), nullable=False)
+	sportid = db.Column(db.Integer,db.ForeignKey('sport.id'))
+	def __repr__(self):
+		return ''.join([
+			'Modus: ', self.modus
+			])
+
+class Participant(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	participant = db.Column(db.String(100), nullable=False)
+	sportid = db.Column(db.Integer,db.ForeignKey('sport.id'))
+	def __repr__(self):
+		return ''.join([
+			'Participant: ', self.participant
+			])

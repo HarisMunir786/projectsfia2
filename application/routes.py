@@ -3,20 +3,20 @@ from flask import render_template, url_for, redirect, request
 # import the app, db and bcrypt object from the ./application/__init__.py
 from application import app, db, bcrypt
 # import the models from the ./application/models.py
-from application.models import User
+from application.models import User, Sport, Modus, Participant
 # import login_user, current_user, logout_user, login_required function from flask_login
 from flask_login import login_user, current_user, logout_user, login_required
 # import RegistrationForm and LoginForm from ./application/forms.py
-from application.forms import LoginForm, RegistrationForm
+from application.forms import LoginForm, RegistrationForm, GenerateForm
 
 @app.route('/')
 @app.route('/home')
 def home():
 	return render_template('home.html', title='Home')
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-	form = RegistrationForm
+	form = RegistrationForm()
 	if form.validate_on_submit():
 		hash_pw = bcrypt.generate_password_hash(form.password.data)
 		user = User(name=form.name.data, email=form.email.data, password=hash_pw)
@@ -25,7 +25,7 @@ def register():
 		return redirect(url_for('login'))
 	return render_template('register.html', title='Register', form=form)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
 	if current_user.is_authenticated:
 		return redirect(url_for('login'))
@@ -41,7 +41,14 @@ def login():
 				return redirect(url_for('generate'))
 	return render_template('login.html', title='Login', form=form)
 
-@app.route('/generate')
+@app.route('/generate', methods=['GET', 'POST'])
 @login_required()
 def generate():
-        return render_template('generate.html', title='Random Generator')
+	form = GenerateForm
+#	if form.validate_on_submit():
+        return render_template('generate.html', title='Random Generator', form=form)
+
+@app.route("/logout")
+def logout():
+	logout_user()
+	return redirect(url_for('login'))

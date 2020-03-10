@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from application.models import User
+from application.models import User, Sport, Modus, Participant
 
 class RegistrationForm(FlaskForm):
 	name = StringField('Name',
@@ -31,8 +31,10 @@ class RegistrationForm(FlaskForm):
 	)
 
 	submit = SubmitField('Sign Up')
+
 	def validate_email(self, email):
 		user = User.query.filter_by(email=email.data).first()
+
 		if user:
 			raise ValidationError('Email already in use')
 
@@ -52,3 +54,24 @@ class LoginForm(FlaskForm):
 
 	remember = BooleanField('Remember Me')
 	submit = SubmitField('Login')
+
+class GenerateForm(FlaskForm):
+	sport = StringField('Sport',
+		validators=[
+			DataRequired()
+		]
+	)
+
+	modus = StringField('Modus',
+		validotors=[
+			DataRequired()
+		]
+	)
+
+	participant = StringField('Participant',
+		validators=[
+			DataRequired()
+		]
+	)
+
+

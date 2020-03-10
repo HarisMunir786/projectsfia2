@@ -4,13 +4,25 @@
 	<head>
                 <title>{{ title }} - Page</title>
 	</head>
+	<body>
+	{% if current_user.is_authenticated %}
         <div class ="navbar" align="center">
                 <a>&nbsp</a><a>&nbsp</a>
                 <a href="{{ url_for('home') }}">Home</a>
                 <a>&nbsp</a><a>&nbsp</a><a>|</a><a>&nbsp</a><a>&nbsp</a>
+                <a href="{{ url_for('generate') }}">Random Tournament Generator</a>
+                <a>&nbsp</a><a>&nbsp</a><a>|</a><a>&nbsp</a><a>&nbsp</a>
+                <a href="{{ url_for('logout') }}">Logout</a>
+	{% else %}
+        <div class ="navbar" align="center">
+                <a>&nbsp</a><a>&nbsp</a>
+                <a href="{{ url_for('home') }}">Home</a>
+	        <a>&nbsp</a><a>&nbsp</a><a>|</a><a>&nbsp</a><a>&nbsp</a>
                 <a href="{{ url_for('register') }}">Register</a>
                 <a>&nbsp</a><a>&nbsp</a><a>|</a><a>&nbsp</a><a>&nbsp</a>
                 <a href="{{ url_for('login') }}">Login</a>
+        </div>
+	{% endif %}
         </div>
        	       {% block body %}{% endblock %}
         </body>
