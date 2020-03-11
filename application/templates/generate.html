@@ -25,7 +25,14 @@
 	{{ form.submit }}
 	</div>
 	</p>
-	<hr>
 </form>
 </div>
+<hr>
+        <p>
+        {% if participants %}
+                {% for participant in participants %}
+                        <h4>{{ participant }}</h4>
+                {% endfor %}
+        {% endif %}
+        </p>
 {% endblock %}

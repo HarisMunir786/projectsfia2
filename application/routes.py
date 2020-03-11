@@ -51,7 +51,7 @@ def generate():
 			enterparticipant = Participant(participant=form.participant.data)
 			db.session.add(enterparticipant)
 			db.session.commit()
-			return redirect(url_for('enter'))
+			return redirect(url_for('generate'))
 		else:
 			return render_template('home.html', title='Home', form=form, participants=allparticipants)
 	else:
