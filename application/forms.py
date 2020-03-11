@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from application.models import User, Sport, Modus, Participant
+from application.models import User, Participant
 
 class RegistrationForm(FlaskForm):
 	name = StringField('Name',
@@ -59,13 +59,13 @@ class EnterForm(FlaskForm):
 	sport = SelectField('Sport',
 		validators=[
 			DataRequired()
-		], choices = [("FOOTBALL","Football"),("BASKETBALL","Basketball"),("VOLLEYBALL","Volleyball"),("RUGBY", "Rugby"), ("HOCKEY", "Hockey"), ("TENNIS", "Tennis"), ("TABLE TENNIS", "Table Tennis"), ("BADMINTON", "Badminton")]
+		]
 	)
 
-	modus = SelectField('Modus',
+	totalnumber = SelectField('Total Number',
 		validators=[
 			DataRequired()
-		], choices = [("SEMI FINALS", "Semi Finals"), ("QUARTER FINALS", "Quarter Finals"), ("8TH FINALS", "8th Finals")]
+		]
 	)
 
 	participant = StringField('Participant',
@@ -79,13 +79,13 @@ class GenerateForm(FlaskForm):
 	sport = SelectField('Sport',
 		validators=[
 			DataRequired()
-		], choices = [("FOOTBALL","Football"),("BASKETBALL","Basketball"),("VOLLEYBALL","Volleyball"),("RUGBY", "Rugby"), ("HOCKEY", "Hockey"), ("TENNIS", "Tennis"), ("TABLE TENNIS", "Table Tennis"), ("BADMINTON", "Badminton")]
+		]
 	)
 
-	modus = SelectField('Modus',
+	totalnumber = SelectField('Total Number',
 		validators=[
 			DataRequired()
-		], choices = [("SEMI FINALS", "Semi Finals")]
+		]
 	)
 
 	participant = StringField('Participant',
@@ -93,4 +93,25 @@ class GenerateForm(FlaskForm):
 			DataRequired()
 		]
 	)
+
 	submit = SubmitField('Generate')
+
+#class GenerateForm(FlaskForm):
+#	sport = SelectField('Sport',
+#		validators=[
+#			DataRequired()
+#		], choices = [("FOOTBALL","Football"),("BASKETBALL","Basketball"),("VOLLEYBALL","Volleyball"),("RUGBY", "Rugby"), ("HOCKEY", "Hockey"), ("TENNIS", "Tennis"), ("TABLE TENNIS", "Table Tennis"), ("BADMINTON", "Badminton")]
+#	)
+#
+#	modus = SelectField('Modus',
+#		validators=[
+#			DataRequired()
+#		], choices = [("SEMI FINALS", "Semi Finals")]
+#	)
+#
+#	participant = StringField('Participant',
+#		validators=[
+#			DataRequired()
+#		]
+#	)
+#	submit = SubmitField('Generate')

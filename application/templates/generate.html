@@ -5,19 +5,10 @@
 <div class="form" align="center">
 <form method='POST' action=''>
 	{{ form.hidden_tag() }}
+
 	<p>
 	<div class="form_group" align="center">
-	<h4>Select a sport: </4>{{ form.sport }}
-	</div>
-	</p>
-	<p>
-	<div class="form_group" align="center">
-	<h4>Select a modus: </4>{{ form.modus }}
-	</div>
-	</p>
-	<p>
-	<div class="form_group" align="center">
-	<h4>Enter the name of the participant: </4>{{ form.participant }}</p>
+	<h4>Enter the name of the participant: </h4>{{ form.participant }}</p>
 	</div>
 	</p>
 	<p>
@@ -28,6 +19,7 @@
 </form>
 </div>
 <hr>
+<!--
         <p>
         {% if participants %}
                 {% for participant in participants %}
@@ -35,4 +27,5 @@
                 {% endfor %}
         {% endif %}
         </p>
+-->
 {% endblock %}

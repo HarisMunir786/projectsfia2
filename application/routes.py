@@ -3,7 +3,7 @@ from flask import render_template, url_for, redirect, request
 # import the app, db and bcrypt object from the ./application/__init__.py
 from application import app, db, bcrypt
 # import the models from the ./application/models.py
-from application.models import User, Sport, Modus, Participant
+from application.models import User, Participant
 # import login_user, current_user, logout_user, login_required function from flask_login
 from flask_login import login_user, current_user, logout_user, login_required
 # import RegistrationForm and LoginForm from ./application/forms.py
