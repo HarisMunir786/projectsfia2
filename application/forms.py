@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import User, Sport, Modus, Participant
+#from wtforms_sqlalchemy.fields import QuerySelectField
 
 class RegistrationForm(FlaskForm):
 	name = StringField('Name',
@@ -55,7 +56,7 @@ class LoginForm(FlaskForm):
 	remember = BooleanField('Remember Me')
 	submit = SubmitField('Login')
 
-class GenerateForm(FlaskForm):
+class EnterForm(FlaskForm):
 	sport = SelectField('Sport',
 		validators=[
 			DataRequired()
@@ -73,4 +74,25 @@ class GenerateForm(FlaskForm):
 			DataRequired()
 		]
 	)
-	submit = SubmitField('Generate')
+	submit = SubmitField('Enter')
+
+#class GenerateForm(FlaskForm):
+#	sportopts = QuerySelectField(
+#		'Sport',
+#		query_factory=choice_sport: models.Sport.query,
+#		allow_blank=False
+#	)
+#
+#	modusopts = QuerySelectField(
+#		'Modus',
+#		query_factory=choice_modus: models,Modus.query,
+#		allow_blank=False
+#	)
+#
+#	participant = StringField('Participant',
+#		validators=[
+#			DataRequired()
+#		]
+#	)
+#
+#	submit = SubmitField('Generate')

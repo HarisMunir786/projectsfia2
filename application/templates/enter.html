@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+<h2>{{ title }}</h2>
+{% block body %}
+<h3 align="center">Random Tournament Generator</h3>
+<div class="form" align="center">
+<form method='POST' action=''>
+        {{ form.hidden_tag() }}
+        <p>
+        <div class="form_group" align="center">
+        <h4>Select a sport: </4>{{ form.sport }}
+        </div>
+        </p>
+        <p>
+        <div class="form_group" align="center">
+        <h4>Select a modus: </4>{{ form.modus }}
+        </div>
+        </p>
+        <p>
+        <div class="form_group" align="center">
+        <h4>Enter the name of the participant: </4>{{ form.participant }}</p>
+        </div>
+        </p>
+        <p>
+        <div class="form_group" align="center">
+        {{ form.submit }}
+        </div>
+        </p>
+        <hr>
+</form>
+</div>
+{% endblock %}
+
