@@ -76,19 +76,21 @@ class EnterForm(FlaskForm):
 	submit = SubmitField('Enter')
 
 class GenerateForm(FlaskForm):
-        sport = SelectField('Sport',
-                validators=[
-                        DataRequired()
-                ], choices = [("FOOTBALL","Football"),("BASKETBALL","Basketball"),("VOLLEYBALL","Volleyba$
-        )
-        modus = SelectField('Modus',
-                validators=[
-                        DataRequired()
-                ], choices = [("SEMI FINALS", "Semi Finals")]
-        )
-        participant = StringField('Participant',
-                validators=[
-                        DataRequired()
-                ]
-        )
+	sport = SelectField('Sport',
+		validators=[
+			DataRequired()
+		], choices = [("FOOTBALL","Football"),("BASKETBALL","Basketball"),("VOLLEYBALL","Volleyball"),("RUGBY", "Rugby"), ("HOCKEY", "Hockey"), ("TENNIS", "Tennis"), ("TABLE TENNIS", "Table Tennis"), ("BADMINTON", "Badminton")]
+	)
+
+	modus = SelectField('Modus',
+		validators=[
+			DataRequired()
+		], choices = [("SEMI FINALS", "Semi Finals")]
+	)
+
+	participant = StringField('Participant',
+		validators=[
+			DataRequired()
+		]
+	)
 	submit = SubmitField('Generate')

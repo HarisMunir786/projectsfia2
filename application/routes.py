@@ -44,12 +44,9 @@ def login():
 @app.route('/enter', methods=['GET', 'POST'])
 #@login_required()
 def enter():
-#	form = GenerateForm()
 	form = EnterForm()
 	#if form.validate_on_submit():
 	return render_template('enter.html', title='Enter the particpant', form=form)
-#	entryform = EnterForm()
-#	return render_template('enter.html', title='Enter the particpant', input=entryform)
 
 @app.route("/logout")
 def logout():
