@@ -65,7 +65,7 @@ class EnterForm(FlaskForm):
 	modus = SelectField('Modus',
 		validators=[
 			DataRequired()
-		], choices = [("SEMI FINALS", "Semi Finals")]
+		], choices = [("SEMI FINALS", "Semi Finals"), ("QUARTER FINALS", "Quarter Finals"), ("8TH FINALS", "8th Finals")]
 	)
 
 	participant = StringField('Participant',
