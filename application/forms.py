@@ -2,7 +2,6 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from application.models import User, Sport, Modus, Participant
-#from wtforms_sqlalchemy.fields import QuerySelectField
 
 class RegistrationForm(FlaskForm):
 	name = StringField('Name',
@@ -66,7 +65,7 @@ class EnterForm(FlaskForm):
 	modus = SelectField('Modus',
 		validators=[
 			DataRequired()
-		], choices = [("SEMI FINALS", "Semi Finals"), ("QUARTER FINALS", "Quarter Finals"), ("8TH FINALS", "8th Finals"), ("16TH FINALS","16th Finals"), ("32ND FINALS", "32nd Finals")]
+		], choices = [("SEMI FINALS", "Semi Finals")]
 	)
 
 	participant = StringField('Participant',
@@ -76,23 +75,20 @@ class EnterForm(FlaskForm):
 	)
 	submit = SubmitField('Enter')
 
-#class GenerateForm(FlaskForm):
-#	sportopts = QuerySelectField(
-#		'Sport',
-#		query_factory=choice_sport: models.Sport.query,
-#		allow_blank=False
-#	)
-#
-#	modusopts = QuerySelectField(
-#		'Modus',
-#		query_factory=choice_modus: models,Modus.query,
-#		allow_blank=False
-#	)
-#
-#	participant = StringField('Participant',
-#		validators=[
-#			DataRequired()
-#		]
-#	)
-#
-#	submit = SubmitField('Generate')
+class GenerateForm(FlaskForm):
+        sport = SelectField('Sport',
+                validators=[
+                        DataRequired()
+                ], choices = [("FOOTBALL","Football"),("BASKETBALL","Basketball"),("VOLLEYBALL","Volleyba$
+        )
+        modus = SelectField('Modus',
+                validators=[
+                        DataRequired()
+                ], choices = [("SEMI FINALS", "Semi Finals")]
+        )
+        participant = StringField('Participant',
+                validators=[
+                        DataRequired()
+                ]
+        )
+	submit = SubmitField('Generate')

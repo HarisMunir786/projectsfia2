@@ -7,9 +7,7 @@ from application.models import User, Sport, Modus, Participant
 # import login_user, current_user, logout_user, login_required function from flask_login
 from flask_login import login_user, current_user, logout_user, login_required
 # import RegistrationForm and LoginForm from ./application/forms.py
-from application.forms import LoginForm, RegistrationForm, EnterForm #GenerateForm
-# import QuerySelectField
-#from wtforms_sqlalchemy.fields import QuerySelectField
+from application.forms import LoginForm, RegistrationForm, EnterForm, GenerateForm
 
 @app.route('/')
 @app.route('/home')
@@ -50,14 +48,16 @@ def enter():
 	form = EnterForm()
 	#if form.validate_on_submit():
 	return render_template('enter.html', title='Enter the particpant', form=form)
+#	entryform = EnterForm()
+#	return render_template('enter.html', title='Enter the particpant', input=entryform)
 
 @app.route("/logout")
 def logout():
 	logout_user()
 	return redirect(url_for('login'))
 
-#@app.route('/generate', methods=['GET', 'POST'])
-#def generate():
-#	form = GenerateForm()
+@app.route('/generate', methods=['GET', 'POST'])
+def generate():
+	form = GenerateForm()
 #	if form.validate_on_submit():
-#		return render_template('generate.html', title='Random Generator', form=form)
+	return render_template('generate.html', title='Random Generator', form=form)
