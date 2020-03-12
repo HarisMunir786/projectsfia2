@@ -9,7 +9,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 # import RegistrationForm and LoginForm from ./application/forms.py
 from application.forms import LoginForm, RegistrationForm, EnterForm, GenerateForm
 from sqlalchemy import func, select
-
+import random, requests
 
 @app.route('/')
 @app.route('/home')
@@ -79,6 +79,7 @@ def generate():
 #		for rest_participant in range(8):
 #			rest_participant = total_participant - rest_participant
 #			return render_template('generate.html', title='Generator', participants=rest_participant)
-#	return render_template('generate.html', title='Generator', participants=random_participant)
-#repeat 4 times, to give 4 matches with each random participant
 	return render_template('generate.html', title='Generator', participants=random_participant)
+#repeat 4 times, to give 4 matches with each random participant
+#	random_match = Participant.query.get(random_participant(func.random())).limit(4)
+#	return render_template('generate.html', title='Generator', participants=random_participant, matches=random_match)

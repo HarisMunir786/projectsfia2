@@ -2,6 +2,9 @@
 <h2>{{ title }}</h2>
 {% block body %}
 <div align="center"><h3>Random Generated Single elimination Tournament</h3></div>
+
+<div align="center"><h4>Following 8 participants have been randomly selected from user entry</h4></div>
+
         <div align="center">
         {% if participants %}
                 {% for participant in participants %}
@@ -9,4 +12,14 @@
                 {% endfor %}
         {% endif %}
         </div>
+<hr>
+<!--
+        <div align="center">
+        {% if matches %}
+                {% for match in matches %}
+                        <h4>{{ match }}</h4>
+                {% endfor %}
+        {% endif %}
+        </div>
+-->
 {% endblock %}
