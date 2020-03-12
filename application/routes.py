@@ -8,6 +8,8 @@ from application.models import User, Participant
 from flask_login import login_user, current_user, logout_user, login_required
 # import RegistrationForm and LoginForm from ./application/forms.py
 from application.forms import LoginForm, RegistrationForm, EnterForm, GenerateForm
+from sqlalchemy import func, select
+
 
 @app.route('/')
 @app.route('/home')
@@ -66,4 +68,6 @@ def logout():
 @app.route('/generate', methods=['GET', 'POST'])
 #@login_required()
 def generate():
-	return render_template('generate.html', title='Generator')
+#	return render_template('generate.html', title='Generator')
+	random_participant = Participant.query.order_by(func.random()).limit(2)
+	return render_template('generate.html', title='Generator', participants=random_participant)
