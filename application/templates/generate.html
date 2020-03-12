@@ -1,31 +1,5 @@
 {% extends "layout.html" %}
 <h2>{{ title }}</h2>
 {% block body %}
-<div class="form" align="center">
-<form method='POST' action=''>
-	{{ form.hidden_tag() }}
-
-	<p>
-	<div class="form_group" align="center">
-	<h4>Enter the name of the participant: </h4>{{ form.participant }}</p>
-	</div>
-	</p>
-	<p>
-	<div class="form_group" align="center">
-	{{ form.submit }}
-	</div>
-	</p>
-</form>
-</div>
-<hr>
-        <p>
-        {% if participants %}
-                {% for participant in participants %}
-                        <h4>{{ participant }}</h4>
-                {% endfor %}
-        {% endif %}
-        </p>
-<hr>
-<h3 align="center">Random Tournament Generator</h3>
-
+<div align="center"><h3>Random Generated Single elimination Tournament</h3></div>
 {% endblock %}
