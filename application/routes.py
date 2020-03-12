@@ -38,12 +38,12 @@ def login():
 			if next_page:
 				return redirect(next_page)
 			else:
-				return redirect(url_for('generate'))
+				return redirect(url_for('entry'))
 	return render_template('login.html', title='Login', form=form)
 
-@app.route('/generate', methods=['GET', 'POST'])
+@app.route('/entry', methods=['GET', 'POST'])
 #@login_required()
-def generate():
+def entry():
 	form = EnterForm()
 	allparticipants = Participant.query.all()
 	if request.method == 'POST':
@@ -51,13 +51,30 @@ def generate():
 			enterparticipant = Participant(participant=form.participant.data)
 			db.session.add(enterparticipant)
 			db.session.commit()
-			return redirect(url_for('generate'))
+			return redirect(url_for('entry'))
 		else:
 			return render_template('home.html', title='Home', form=form, participants=allparticipants)
 	else:
-		return render_template('generate.html', form=form, participants=allparticipants)
+		return render_template('entry.html', form=form, participants=allparticipants)
 
 @app.route("/logout")
 def logout():
 	logout_user()
 	return redirect(url_for('login'))
+
+
+@app.route('/generate', methods=['GET', 'POST'])
+#@login_required()
+def generate():
+        form = EnterForm()
+        allparticipants = Participant.query.all()
+        if request.method == 'POST':
+                if current_user.is_authenticated:
+                        enterparticipant = Participant(participant=form.participant.data)
+                        db.session.add(enterparticipant)
+                        db.session.commit()
+                        return redirect(url_for('generate'))
+                else:
+                        return render_template('home.html', title='Home', form=form, participants=allparticipants)
+        else:
+                return render_template('generate.html', form=form, participants=allparticipants)
