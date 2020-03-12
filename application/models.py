@@ -46,5 +46,6 @@ class Participant(db.Model):
 		return ''.join([
 #			'Sport: ', self.sport, '\r\n',
 #			'Number of Participant: ', self.totalnumber, '\r\n',
-			'Participant: ', self.participant
+#			'Participant: ', self.participant
+			self.participant
 			])

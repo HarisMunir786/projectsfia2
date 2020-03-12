@@ -69,5 +69,16 @@ def logout():
 #@login_required()
 def generate():
 #	return render_template('generate.html', title='Generator')
-	random_participant = Participant.query.order_by(func.random()).limit(2)
+	random_participant = Participant.query.order_by(func.random()).limit(8)
+	# enter them into a list
+#	range = [Participant.query.all()]
+	#pull 2 from the list to display
+#	for total_participant in range:
+#		return render_template('generate.html', title='Generator', participants=range.query.order_by(func.randam()).limit(8))
+		#delete those 2 from the list
+#		for rest_participant in range(8):
+#			rest_participant = total_participant - rest_participant
+#			return render_template('generate.html', title='Generator', participants=rest_participant)
+#	return render_template('generate.html', title='Generator', participants=random_participant)
+#repeat 4 times, to give 4 matches with each random participant
 	return render_template('generate.html', title='Generator', participants=random_participant)
