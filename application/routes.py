@@ -65,9 +65,9 @@ def logout():
 	return redirect(url_for('login'))
 
 
-@app.route('/generate', methods=['GET', 'POST'])
+@app.route('/randomselection', methods=['GET', 'POST'])
 #@login_required()
-def generate():
+def randomselection():
 #	return render_template('generate.html', title='Generator')
 	random_participant = Participant.query.order_by(func.random()).limit(8)
 	# enter them into a list
@@ -79,7 +79,12 @@ def generate():
 #		for rest_participant in range(8):
 #			rest_participant = total_participant - rest_participant
 #			return render_template('generate.html', title='Generator', participants=rest_participant)
-	return render_template('generate.html', title='Generator', participants=random_participant)
+	return render_template('randomselection.html', title='Random Selection', participants=random_participant)
 #repeat 4 times, to give 4 matches with each random participant
 #	random_match = Participant.query.get(random_participant(func.random())).limit(4)
 #	return render_template('generate.html', title='Generator', participants=random_participant, matches=random_match)
+
+
+@app.route('/randommatches', methods=['GET', 'POST'])
+def randommatches():
+	return render_template('randommatches.html', title='Random Matches')
